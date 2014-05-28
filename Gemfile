@@ -25,6 +25,8 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# adding faker as in the checkpoint about seed data
+gem 'faker'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
