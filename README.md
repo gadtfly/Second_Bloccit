@@ -2,7 +2,7 @@
 
 ## Bloccit: a Reddit clone to teach the fundamentals of web development and Rails 4.
 Made with my mentor, Oliver, at [Bloc](http://bloc.io).
-
+##I don't know where would i get the DEVISE_SECRET_KEY from and if i have to add it to both yml files???
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
