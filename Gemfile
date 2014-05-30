@@ -40,6 +40,8 @@ gem 'spring',        group: :development
 gem 'devise'
 #adding figaro according to bloc
 gem 'figaro'
+#adding pundit gem according to bloc
+gem 'pundit'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
