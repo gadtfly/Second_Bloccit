@@ -1,6 +1,6 @@
 require 'faker'
 
-#create users as per bloc instruccions
+#create users 
 5.times do
   user = User.new(
     name:     Faker::Name.name,
@@ -12,10 +12,20 @@ require 'faker'
 end
 users = User.all 
 
+#crearemos los topics
+15.times do
+  Topic.create(
+    name:            Faker::Lorem.sentence,
+    description:     Faker::Lorem.paragraph
+  )
+end
+topics = Topic.all 
+
 #create posts
 50.times do 
   Post.create(
     user:  users.sample,
+    topic: topics.sample,
     title: Faker::Lorem.sentence,
     body:  Faker::Lorem.paragraph
   )  
@@ -31,10 +41,34 @@ posts = Post.all
     )
 end
 
-User.first.update_attributes(
-  email: 'youremail.com',
-  password: 'helloworld',
+#crearemos un usuario administrador
+admin = User.new(
+  name:       'Admin User',
+  email:      'admin@example.com',
+  password:   'pepepepe',
+  role:       'admin'
   )
+admin.skip_confirmation!
+admin.save
+
+#crearemos un usuario moderador
+moderator = User.new(
+  name:       'Moderator User',
+  email:      'moderator@example.com',
+  password:   'pepepepe',
+  role:       'moderator'
+  )
+moderator.skip_confirmation!
+moderator.save
+
+#crearemos un miembro
+member = User.new(
+  name:       'Member User',
+  email:      'member@example.com',
+  password:   'pepepepe',
+  )
+member.skip_confirmation!
+member.save
 
 puts "Seed Finished"
 puts "#{User.count} users created"
