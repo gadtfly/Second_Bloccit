@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
-    authorize @topics 
+    authorize @topics
   end
 
   def new
@@ -21,6 +21,8 @@ class TopicsController < ApplicationController
     authorize @topic 
   end
 
+  # POST /topics
+  # params = {topic: {title: 'asdfasdfaf', body: 'qwerqwerwqewrw'}}
   def create
     @topic = Topic.new(topic_params)
     authorize @topic
