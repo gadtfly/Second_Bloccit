@@ -42,6 +42,9 @@ gem 'devise'
 gem 'figaro'
 #adding pundit gem according to bloc
 gem 'pundit'
+#adding redacarpet as the 36 checkpoint indicates
+gem 'redcarpet'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
