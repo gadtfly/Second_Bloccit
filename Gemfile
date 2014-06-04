@@ -44,6 +44,11 @@ gem 'figaro'
 gem 'pundit'
 #adding redacarpet as the 36 checkpoint indicates
 gem 'redcarpet'
+#adding carrierwave and minimagick according to chkpnt 37
+gem 'carrierwave'
+gem 'mini_magick'
+#adding fog
+gem 'fog'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

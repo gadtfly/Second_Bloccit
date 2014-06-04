@@ -9,7 +9,7 @@
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control', placeholder: "Type Email Here" %>
       </div>
-      <%= if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div class="form-group">
           <p>Waiting confirmation for:</p>
           <%= resource.unconfirmed_email %>
@@ -40,6 +40,17 @@
         <%= f.text_field :name, class: 'form-control', placeholder: "Enter Your Name Here", autofocus: true %>
       </div>
       <div class="form-group">
+      <% if current_user.avatar? %>
+        <div class='form-group'
+          <p>Current avatar</p>
+          <%= image_tag(current_user.avatar.profile.url ) %>
+        </div>
+      <% end %>
+      <div class='form-group'>
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
         <%= f.submit "Update", class: 'btn btn-success' %>
       </div>
     <% end %>
