@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    #@topics = Topic.all commented because im adding will_paginate next
+    @topics = Topic.paginate(page: params[:page], per_page: 10)
     authorize @topics
   end
 
@@ -12,7 +13,8 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     #cambiar o agregar?
-    @posts = @topic.posts
+    #@posts = @topic.posts  commented because im adding paginate next
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 10)
     #authorize @topic
   end
 

@@ -13,7 +13,7 @@ end
 users = User.all 
 
 #crearemos los topics
-15.times do
+105.times do
   Topic.create(
     name:            Faker::Lorem.sentence,
     description:     Faker::Lorem.paragraph
@@ -22,7 +22,7 @@ end
 topics = Topic.all 
 
 #create posts
-50.times do 
+1950.times do 
   Post.create(
     user:  users.sample,
     topic: topics.sample,
@@ -33,7 +33,7 @@ end
 posts = Post.all
 
 #create comments
-100.times do 
+2000.times do 
   Comment.create(
     #user: users.sample,        ####we have not yet associated user with comment?????
     post: posts.sample,
