@@ -9,9 +9,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
     @comments = @post.comments
-    #i have to add an instance variable here to show comments with posts
-
-    
   end
 
   def new
@@ -24,11 +21,6 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
-
-#i have to add an instance variable here to create comments within posts
-
-
-    
     authorize @post 
     if @post.save
       redirect_to [@topic, @post], notice: "This post was saved succesfully!!!"
@@ -37,6 +29,26 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+
+    title = @post.title
+    authorize @post
+    if @post.destroy
+      flash[:notice] = "\"#{title}\" was deleted successfully, now grab another."
+      redirect_to @topic
+    else
+      flash[:error] = "There was an error deleting the post, please try again."
+      render :show
+    end
+  end
+  
+
+
+
+
 
   def edit
     @topic = Topic.find(params[:topic_id])

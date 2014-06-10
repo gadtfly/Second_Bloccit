@@ -43,20 +43,17 @@
   end
 
 def destroy
-  @topic = Topic.find.(params[:topic_id])
+  @topic = Topic.find(params[:topic_id])
   @post = @topic.posts.find(params[:post_id])
-
   @comment = @post.comments.find(params[:id])
-  authorize comment
+  authorize @comment
 
   if @comment.destroy
-   flash[:notice] = "Comment was safely removed"
+   flash[:notice] = "Comment was safely removed, thank you."
+   redirect_to [@topic, @post]
   else
-    flash[:error] = "Comment could not be terminated..."
-  end
-
-  respond_with(@comment) do |f|
-    f.html {redirect_to [@topic, @post] }
+    flash[:error] = "Comment could not be terminated...I'll be back."
+    redirect_to [@topic, @post]
   end
 end
 

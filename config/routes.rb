@@ -5,7 +5,8 @@ Bloccit::Application.routes.draw do
 
   resources :topics do
     resources :posts, except: [:index] do
-      resources :comments, only: [:create, :update, :edit]
+      resources :comments, only: [:create, :update, :edit, :destroy]
+      #should it be just create and destroy? as in bloc? why?
     end
   end
 
