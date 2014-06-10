@@ -34,11 +34,12 @@ posts = Post.all
 
 #create comments
 2000.times do 
-  Comment.create(
-    #user: users.sample,        ####we have not yet associated user with comment?????
+  comment = Comment.create(
+    user: users.sample,               
     post: posts.sample,
     body: Faker::Lorem.paragraph
     )
+  comment.update_attribute(:created_at, rand(10.minutes..1.year).ago)
 end
 
 #crearemos un usuario administrador

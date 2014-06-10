@@ -1,0 +1,20 @@
+<%= form_for [topic, post, comment] do |f| %>
+  <%= form_group_tag(post.errors[:body]) do %>
+    <%= f.label :body, 'Type your comment here'%>
+    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter your comment BODY here, please be nice" %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  </div>
+<% end %>
+
+
+<!--
+POST /topics/:topic_id/posts/:post_id/comments
+
+@topic = Topic.find(params[:topic_id])
+@post = Post.find(params[:post_id])
+@comments = @post.comments.new(comment_params)
+@comment.save
+-->

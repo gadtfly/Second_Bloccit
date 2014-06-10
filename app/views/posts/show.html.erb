@@ -7,6 +7,12 @@
       <%= @post.user.name %>
     </small>
     <p><%= markdown @post.body %></p>
+
+    <%= render @post.comments %>
+    
+    <% if policy(Comment.new).create? %>
+      <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: Comment.new} %>
+    <% end %>
   </div>
 
   <%= image_tag(@post.image.thumb.url) if @post.image? %>
@@ -17,5 +23,3 @@
     <% end %>
   </div>
 </div>
-
-

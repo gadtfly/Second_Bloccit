@@ -1,0 +1,7 @@
+<div>
+  <%= comment.body %>
+  <small>by <%= comment.user.name %></small>
+  <% if policy(comment).edit? %>
+    <%= link_to 'edit this comment', edit_topic_post_comment_path(comment.post.topic, comment.post, comment) %>
+  <% end %>
+</div>

@@ -8,6 +8,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
+    @comments = @post.comments
+    #i have to add an instance variable here to show comments with posts
+
     
   end
 
@@ -21,6 +24,10 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
+
+#i have to add an instance variable here to create comments within posts
+
+
     
     authorize @post 
     if @post.save
