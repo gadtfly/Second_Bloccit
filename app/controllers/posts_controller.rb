@@ -9,6 +9,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
     @comments = @post.comments
+    authorize @topic
+    @comment = comment.new        #why was this line missing? does the order of these 5 lines matter?
   end
 
   def new
