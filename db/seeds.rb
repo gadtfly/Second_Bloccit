@@ -13,7 +13,7 @@ end
 users = User.all 
 
 #crearemos los topics
-105.times do
+15.times do
   Topic.create(
     name:            Faker::Lorem.sentence,
     description:     Faker::Lorem.paragraph
@@ -23,14 +23,14 @@ topics = Topic.all
 
 #create posts
 2000.times do 
-  Post.create(
+  post = Post.create(
     user:  users.sample,
     topic: topics.sample,
     title: Faker::Lorem.sentence,
     body:  Faker::Lorem.paragraph
   )  
-  post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
-  post.update_rank
+    post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+    post.update_rank
 end
 posts = Post.all
 

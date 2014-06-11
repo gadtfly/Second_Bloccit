@@ -1,11 +1,14 @@
 class Post < ActiveRecord::Base
     has_many :comments, dependent: :destroy
     has_many :votes, dependent: :destroy
+    has_many :favorites, dependent: :destroy
     belongs_to :user
     belongs_to :topic
+    default_scope { order('rank DESC') }
+
+    
     after_create :create_vote
     mount_uploader :image, ImageUploader #why its not mentioned on the bloc, while ranking ?
-    default_scope { order('rank DESC') }
 
 
     def up_votes
