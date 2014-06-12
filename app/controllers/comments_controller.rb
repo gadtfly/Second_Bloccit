@@ -13,7 +13,7 @@
     @new_comment = Comment.new
 
     if @comment.save
-      flash[:notice] = "Comment was saved, praise the cheesus"
+      flash[:notice] = "Comment was saved, its soul should be clean now."
     else
       flash[:error] = "There was an error saving the comment, please purify its soul."
     end
@@ -49,10 +49,10 @@ def destroy
   authorize @comment
 
   if @comment.destroy
-   flash[:notice] = "Comment was safely removed, thank you."
+   flash[:notice] = "Comment was safely terminated, thank you."
    redirect_to [@topic, @post]
   else
-    flash[:error] = "Comment could not be terminated...I'll be back."
+    flash[:error] = "Comment could not be terminated...It'll be back."
     redirect_to [@topic, @post]
   end
 end
