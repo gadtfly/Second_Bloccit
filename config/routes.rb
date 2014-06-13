@@ -1,10 +1,12 @@
 Bloccit::Application.routes.draw do
 
-  devise_for :users
-  resources :users, only: [:show, :update]
+  get 'posts/index'
 
+  devise_for :users
+  resources :users, only: [:show, :index, :update]
+  resources :posts, only: [:index]
   resources :topics do
-    resources :posts, except: [:index] do
+    resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :update, :edit, :destroy]
       #should it be just create and destroy for comments? as in bloc? why?
       get '/up-vote' => 'votes#up_vote', as: :up_vote
