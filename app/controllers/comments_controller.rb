@@ -1,5 +1,5 @@
  class CommentsController < ApplicationController
-
+  respond_to :html, :js
    def create 
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
@@ -50,10 +50,11 @@ def destroy
 
   if @comment.destroy
    flash[:notice] = "Comment was safely terminated, thank you."
-   redirect_to [@topic, @post]
   else
     flash[:error] = "Comment could not be terminated...It'll be back."
-    redirect_to [@topic, @post]
+  end
+  respond_with(@comment) do |f|
+    f.html { redirect_to [@topic, @post] }
   end
 end
 
